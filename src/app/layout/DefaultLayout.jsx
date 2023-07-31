@@ -40,6 +40,8 @@ function DefaultLayout() {
     localStorage.removeItem('USER_TOKEN')
     localStorage.removeItem('USER_TCKN')
     navigate('/login')   
+
+    
     }
     else{
       setUser({
