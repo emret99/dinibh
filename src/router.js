@@ -1,18 +1,3 @@
-import { createBrowserRouter } from "react-router-dom";
-import GuestLayout from "./app/layout/GuestLayout";
-import DefaultLayout from "./app/layout/DefaultLayout";
-import ForgotPassword from "./app/pages/ForgotPassword";
-import Home from "./app/pages/Home";
-import Login from "./app/pages/Login"
-import Error404 from "./app/pages/Error404";
-import MyPasses from "./app/pages/MyPasses";
-import MyShifts from "./app/pages/MyShifts";
-import ChangePassword from "./app/pages/ChangePassword";
-import Links from "./app/pages/Links";
-import ViewShifts from "./app/pages/ViewShifts";
-import ScanQrCode from "./app/pages/ScanQrCode";
-import Notifications from "./app/pages/Notifications";
-import Instascan from "./app/pages/Instascan";
 
 
 const router = createBrowserRouter([
