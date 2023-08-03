@@ -69,13 +69,15 @@ function QrTara() {
 
     </ul> */
   
-    <Box sx={{marginTop:"1rem", display:"flex",justifyContent:"center",flexDirection:"column",gap:"1rem"}}>
+    <Box sx={{marginTop:"1rem", display:"flex",alignItems:"center",flexDirection:"column",gap:"1rem"}}>
       <Button variant='contained' sx={{width:"35vw",fontSize:"1rem",marginX:"auto"}} onClick={()=>{setCapture()}}>QR Tara</Button>
       <Typography sx={{textAlign:"center"}}>{capture ? "Qr kodunuzu kameraya yakınlaştırın":"Qr tarama için butona basın"}</Typography>
-     {capture && <Box sx={{ width:{xs:"50vw"}, display:"flex",flexDirection:"column",justifyContent:"center",marginLeft:{xs:"4rem"},alignItems:{xs:"center",sm:"end",md:"end"}}}>
+     {capture && 
+     <Box sx={{ height:"100vh", display:"flex",flexDirection:"column",alignItems:"center"}}>
          <BarcodeScannerComponent
+         
         
-        width={400}
+        width={300}
         height={500}
         onUpdate={(err, result) => {
           if (result) setData(result.text);
@@ -84,17 +86,17 @@ function QrTara() {
       />
         <Box sx={{display:"flex" ,width:{xs:"100%",sm:"60%",md:"60%"},flexDirection:{xs:"column"}}}>
           
-        <Alert sx={{}} severity={data ? "success":"warning"}>
-          <AlertTitle >{data ? "Qr tanıma başarılı" :"Qr Tanımlanamadı"}</AlertTitle>    
-        </Alert>
+          <Alert sx={{}} severity={data ? "success":"warning"}>
+            <AlertTitle >{data ? "Qr tanıma başarılı" :"Qr Tanımlanamadı"}</AlertTitle>    
+          </Alert>
           <Box sx={{display:data ? "flex":"none",flexDirection:"column",alignItems:"center"}}>
             <ReplayIcon onClick={()=>{setData('')}} sx={{"&:hover":{cursor:"pointer"}}}></ReplayIcon>  
             <Typography>Yeniden Dene</Typography>  
 
           </Box>
+        <Typography>{data}</Typography>
         </Box>
 
-        <Typography>{data}</Typography>
       </Box>}
 
       

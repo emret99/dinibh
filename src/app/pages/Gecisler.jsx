@@ -19,7 +19,7 @@ function Gecisler() {
     const [city,setCity]=useState("")
     const navigate = useNavigate()
     const [data,setData] = useState()
-    const [response,setResponse] = useState()
+    const [err,setErr] = useState(false)
     useEffect(()=>{
         axios({
             method:"GET",
@@ -56,10 +56,10 @@ function Gecisler() {
                 CihazId:2
             }
             
-        }).then(res=>{
-            console.log(res)
-            setResponse(res.StatusCode)
-        }).catch(err=>console.log(err))
+        }).then(res=>{ 
+        }).catch(err=>{
+            setErr(true)
+        })
  
             
     }
@@ -111,7 +111,7 @@ function Gecisler() {
             </Card>
         </Grid>
         <Grid item xs={6} sx={{marginY:{xs:"2rem",sm:0},maxWidth:{maxWidth:240,md:360},margin:"auto"}}>
-            <Card sx={{backgroundColor:"inherit",paddingY:"1.5rem",boxShadow:"rgba(17, 12, 46, 0.15) 0px 48px 100px 0px"}} >
+            <Card sx={{backgroundColor:"inherit",paddingY:"1.5rem",boxShadow:"rgba(17, 12, 46, 0.10) 0px 48px 100px 0px"}} >
                 <CardMedia
                     sx={{objectFit:"scale-down"}}
                     component="img"
@@ -130,7 +130,7 @@ function Gecisler() {
                 </CardActions>
             </Card>
         </Grid>
-        {response===400 &&<Alert severity={response===200?"success":"error"}>{response===200 ? "basari":"error"}</Alert>}
+        {err===true &&<Alert sx={{marginX:"auto"}} severity="error">Okutulan QR'a ait cihaz konumu ile mevcut konumunuz arasındaki mesafe yeterli değildir.</Alert>}
     </Grid>
     </>
    

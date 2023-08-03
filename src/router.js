@@ -11,7 +11,6 @@ import Linkler from "./app/pages/Linkler";
 import MesaiTakvimi from "./app/pages/MesaiTakvimi";
 import QrTara from "./app/pages/QrTara";
 import Duyurular from "./app/pages/Duyurular";
-import Instascan from "./app/pages/Instascan";
 import { FirmaKontrol } from "./app/pages/FirmaKontrol";
 import SifreUnuttum from "./app/pages/SifreUnuttum";
 
@@ -52,10 +51,6 @@ const router = createBrowserRouter([
             {
                 path:"duyurular",
                 element:<Duyurular/>
-            },
-            {
-                path:"instascan",
-                element:<Instascan/>
             },
             
             {
