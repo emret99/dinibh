@@ -27,35 +27,36 @@ function DefaultLayout() {
       axios({
       method:"POST",
       url:"http://213.254.134.145:6161/api/GenerateTokenWithRefreshToken",
-      data:{RefreshToken:localStorage.getItem('REFRESH_TOKEN'),DeviceId:"123"}    
+      data:{RefreshToken:sessionStorage.getItem('REFRESH_TOKEN'),DeviceId:"123"}    
     }).then(res=>{
       console.log(res.data.RefreshToken)
-      localStorage.setItem('USER_TOKEN',res.data.Token)
+      sessionStorage.setItem('USER_TOKEN',res.data.Token)
     }) 
  
   },[window.location.href])
  */
   useEffect(()=>{   
-    if (!localStorage.getItem('USER_TOKEN')) {
-    localStorage.removeItem('USER_TOKEN')
-    localStorage.removeItem('USER_TCKN')
+    if (!sessionStorage.getItem('USER_TOKEN')) {
+    sessionStorage.removeItem('USER_TOKEN')
+    sessionStorage.removeItem('USER_TCKN')
     navigate('/login')   
 
     
     }
     else{
       setUser({
-        ...user,
-        uname:localStorage.getItem('USER_TCKN')
+        sicil:sessionStorage.getItem('USER_TCKN'),
+        uname:sessionStorage.getItem('USER_NAME'),
+        email:sessionStorage.getItem('USER_EMAIL'),
+        
       })
     }
   
-  },)
+  },[])
   
 
   function handleLogout() {
-    localStorage.removeItem('USER_TOKEN')
-    localStorage.removeItem('USER_TCKN')    
+    sessionStorage.clear()
     setUser({})
     navigate("/login")
 
@@ -73,24 +74,29 @@ function DefaultLayout() {
   return (
     <>
        <Backdrop
+       
         sx={{ display:"flex",flexDirection:"column",justifyContent:"space-around", color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
         onClick={handleClose}
       >
-        <Box sx={{width:"50%",display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+        <Box sx={{width:"70%",display:"flex", justifyContent:"space-between", alignItems:"center",border:"1px solid white",padding:"1rem",borderRadius:"0.5rem"}}>
+          <Box sx={{display:"flex",flexDirection:"column",gap:"0.5rem"}}>
+          <Typography>Kullanıcı Sicil : {user.sicil}</Typography>
           <Typography>Kullanıcı : {user.uname}</Typography>
+
+          </Box>
           <Avatar   src={userLogo}></Avatar>
         </Box>
          <List>
             <ListItemButton >
-              <Badge onClick={()=>{navigate('notifications')}} sx={{marginX:"auto",cursor:"pointer"}} badgeContent={4} color="success">
+              <Badge onClick={()=>{navigate('duyurular')}} sx={{marginX:"auto",cursor:"pointer"}} badgeContent={4} color="success">
                 <MailIcon color="action" />
               </Badge>
             </ListItemButton>
             <ListItemButton sx={{textAlign:"center"}} onClick={()=>navigate('/')}>
               <ListItemText primary={"Ana Sayfa"}/>
             </ListItemButton>
-          {Object.entries({mypasses:'Geçişlerim', links:'Faydalı Linkler', myshifts:'Mesailerim', changepassword:'Şifre değiştir'}).map(([key,value]) => (
+          {Object.entries({gecisler:'Geçişlerim', linkler:'Faydalı Linkler', mesailer:'Mesailerim', sifredegistir:'Şifre değiştir'}).map(([key,value]) => (
             <ListItem key={key}>
               <ListItemButton sx={{textAlign:"center"}} onClick={()=>navigate(key)}>
                 <ListItemText primary={value} />
@@ -128,13 +134,21 @@ function DefaultLayout() {
         variant="permanent"
         anchor="left"
       >
-         <Box style={{display:"flex",flexDirection:"column",margin:"2rem 0" ,width:"100%",alignItems:"center"}}>
-            <Avatar alt="Remy Sharp" src={userLogo} />
-            <Box sx={{marginTop:"1rem",display:"flex",justifyContent:"space-evenly" ,width:"100%"}}>
-              <Typography sx={{display:"block",color:"white",textAlign:"center",fontFamily:"sans-serif"}}>{user.uname}</Typography>
-              <Badge onClick={()=>{navigate('notifications')}} sx={{cursor:"pointer"}} badgeContent={4} color="success">
+         <Box style={{display:"flex",flexDirection:"column",margin:"1rem 0" ,width:"100%",alignItems:"center" ,backgroundColor:"#227093",paddingTop:"1rem",paddingBottom:"1rem",borderRadius:"0.25rem",boxShadow:"5px 5px 5px 0px rgba(0,0,0,0.3)"}}>
+            <Box sx={{display:"flex"}}>
+              <Avatar alt="Remy Sharp" src={userLogo} />
+              <Badge onClick={()=>{navigate('duyurular')}} sx={{cursor:"pointer",marginX:"0.5rem"}} badgeContent={4} color="success">
                 <MailIcon color="action" />
               </Badge>
+
+            </Box>
+            <Box sx={{marginTop:"1rem",display:"flex",justifyContent:"space-evenly" ,width:"100%"}}>
+              <Box>
+                <Typography sx={{fontFamily:"",fontWeight:"600",display:"block",color:"white",textAlign:"center",fontFamily:"sans-serif"}}>Kullanıcı Sicil:{user.sicil}</Typography>
+                <Typography sx={{fontFamily:"",fontWeight:"600",display:"block",color:"white",textAlign:"center",fontFamily:"sans-serif",marginTop:"1rem"}}>Kullanıcı Adı:{user.uname}</Typography>
+
+              </Box>
+
             </Box>
          </Box>
         <Divider />
@@ -144,7 +158,7 @@ function DefaultLayout() {
                 <ListItemText primary={"Ana Sayfa"} />
               </ListItemButton>
             </ListItem>
-          {Object.entries({mypasses:'Geçişlerim', links:'Faydalı Linkler', myshifts:'Mesailerim', changepassword:'Şifre değiştir'}).map(([key,value]) => (
+          {Object.entries({gecisler:'Geçişler', linkler:'Faydalı Linkler', mesailer:'Mesailer', sifredegistir:'Şifre değiştir'}).map(([key,value]) => (
             <ListItem key={key}>
               <ListItemButton onClick={()=>navigate(key)}>
                 <ListItemText primary={value} />

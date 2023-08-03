@@ -6,14 +6,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-function Notifications() {
+function Duyurular() {
   const [data,setData] = useState([])
     useEffect(()=>{
         axios({
             method:"GET",
             url:"http://213.254.134.145:6161/api/GetDuyuruList",
             headers:{
-                "Token":localStorage.getItem('USER_TOKEN').toString()
+                "Token":sessionStorage.getItem('USER_TOKEN').toString()
             }
         }).then(res=>{
             setData(res.data.Data)
@@ -46,4 +46,4 @@ function Notifications() {
   )
 }
 
-export default Notifications
+export default Duyurular

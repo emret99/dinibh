@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
 import { Button,TextField } from '@mui/material'
 import {Alert} from '@mui/material'
 import axios from 'axios'
@@ -7,7 +7,7 @@ import {Grid,Typography} from "@mui/material"
 
 
 
-function ChangePassword() {
+function SifreDegistir() {
 const navigate = useNavigate()
 const [newPw,setNewPw] = useState('')
 const [oldPw,setOldPw] = useState('')
@@ -25,7 +25,7 @@ useEffect(()=>{
           NewPassword:newPw
         },
         headers:{
-          Token:localStorage.getItem('USER_TOKEN')
+          Token:sessionStorage.getItem('USER_TOKEN')
         }
            
       }).then(res=>{
@@ -34,7 +34,7 @@ useEffect(()=>{
           setNewPw('')
           setOldPw('')
           setErr(false)
-          res.data.Token && localStorage.setItem('USER_TOKEN',res.data.Token)
+          res.data.Token && sessionStorage.setItem('USER_TOKEN',res.data.Token)
           setSignal(false)
           setTimeout(() => {
             navigate('/')
@@ -93,4 +93,4 @@ useEffect(()=>{
   )
 }
 
-export default ChangePassword
+export default SifreDegistir

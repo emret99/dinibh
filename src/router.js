@@ -1,19 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
 import GuestLayout from "./app/layout/GuestLayout";
 import DefaultLayout from "./app/layout/DefaultLayout";
-import ForgotPassword from "./app/pages/ForgotPassword";
 import Home from "./app/pages/Home";
 import Login from "./app/pages/Login"
 import Error404 from "./app/pages/Error404";
-import MyPasses from "./app/pages/MyPasses";
-import MyShifts from "./app/pages/MyShifts";
-import ChangePassword from "./app/pages/ChangePassword";
-import Links from "./app/pages/Links";
-import ViewShifts from "./app/pages/ViewShifts";
-import ScanQrCode from "./app/pages/ScanQrCode";
-import Notifications from "./app/pages/Notifications";
+import Gecisler from "./app/pages/Gecisler";
+import Mesailer from "./app/pages/Mesailer";
+import SifreDegistir from "./app/pages/SifreDegistir";
+import Linkler from "./app/pages/Linkler";
+import MesaiTakvimi from "./app/pages/MesaiTakvimi";
+import QrTara from "./app/pages/QrTara";
+import Duyurular from "./app/pages/Duyurular";
 import Instascan from "./app/pages/Instascan";
-
+import { FirmaKontrol } from "./app/pages/FirmaKontrol";
+import SifreUnuttum from "./app/pages/SifreUnuttum";
 
 const router = createBrowserRouter([
     {
@@ -25,33 +25,33 @@ const router = createBrowserRouter([
                 element:<Home/>
             },
             {
-                path:"mypasses",
-                element:<MyPasses/>
+                path:"gecisler",
+                element:<Gecisler/>
             },
             {
-                path:"myshifts",
-                element:<MyShifts/>
+                path:"mesailer",
+                element:<Mesailer/>
             },
             {
-                path:"changepassword",
-                element:<ChangePassword/>
+                path:"sifreDegistir",
+                element:<SifreDegistir/>
             },
             {
-                path:"links",
-                element:<Links/>
+                path:"linkler",
+                element:<Linkler/>
             },
             {
-                path:"viewshifts",
-                element:<ViewShifts/>
+                path:"mesaiTakvimi",
+                element:<MesaiTakvimi/>
             },
             {
-                path:"scanqrcode",
-                element:<ScanQrCode/>
+                path:"qrTara",
+                element:<QrTara/>
 
             },
             {
-                path:"notifications",
-                element:<Notifications/>
+                path:"duyurular",
+                element:<Duyurular/>
             },
             {
                 path:"instascan",
@@ -74,8 +74,12 @@ const router = createBrowserRouter([
                 element:<Login/>
             },
             {
-                path:"forgotpassword",
-                element:<ForgotPassword/>
+                path:"sifremiUnuttum",
+                element:<SifreUnuttum/>
+            },
+            {
+                path:"test",
+                element:<FirmaKontrol/>
             }
         ]
     },

@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react'
+import  {useState, useEffect } from 'react'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom/dist';
 
-function Links() {
+function Linkler() {
   const [links,setLinks] = useState([])
   const navigate = useNavigate()
   useEffect(()=>{
@@ -16,7 +16,7 @@ function Links() {
     method:"GET",
     url:"http://213.254.134.145:6161/api/FaydaliLinkler",
     headers: { 
-      "Token":localStorage.getItem('USER_TOKEN')
+      "Token":sessionStorage.getItem('USER_TOKEN')
   }}).then(res=>{
     setLinks(res.data.Data)
     console.log(res)
@@ -52,4 +52,4 @@ function Links() {
   )
 }
 
-export default Links
+export default Linkler

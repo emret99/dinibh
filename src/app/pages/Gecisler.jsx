@@ -15,7 +15,7 @@ import qrlessLogo from '../../assets/qrlessLogo.png'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function MyPasses() {
+function Gecisler() {
     const [city,setCity]=useState("")
     const navigate = useNavigate()
     const [data,setData] = useState()
@@ -25,7 +25,7 @@ function MyPasses() {
             method:"GET",
             url:"http://213.254.134.145:6161/api/CihazListesi",
             headers:{
-                Token:localStorage.getItem('USER_TOKEN')
+                Token:sessionStorage.getItem('USER_TOKEN')
             }           
         }).then(res=>{
             
@@ -45,9 +45,10 @@ function MyPasses() {
             method:"POST",
             url:"http://213.254.134.145:6161/api/GecisKaydiGonder",
             headers:{
-                Token:localStorage.getItem('USER_TOKEN')
+                Token:sessionStorage.getItem('USER_TOKEN')
             },
             data:{
+                Data:"",
                 OlayZamani:"2023-04-26 08:54:49.0007238",
                 Latitude:location.coords.latitude ??"",
                 Longitude:location.coords.longitude ??"",
@@ -97,7 +98,7 @@ function MyPasses() {
                     height="140"
                     image={qrlessLogo}
                 />
-                <CardContent>
+                <CardContent sx={{textAlign:"center"}}>
                     <Typography fontSize={"1.5rem"} gutterBottom variant="h5" component="div">
                     QR Kodsuz Geçiş Kaydı Oluştur
                     </Typography>
@@ -125,7 +126,7 @@ function MyPasses() {
                     
                 </CardContent>
                 <CardActions sx={{}}>
-                    <Button  onClick={()=>{navigate('/scanqrcode')}} size="small">Seç</Button>
+                    <Button  onClick={()=>{navigate('/qrTara')}} size="small">Seç</Button>
                 </CardActions>
             </Card>
         </Grid>
@@ -136,4 +137,4 @@ function MyPasses() {
   )
 }
 
-export default MyPasses
+export default Gecisler

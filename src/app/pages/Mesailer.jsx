@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom/dist';
 
 
 
-function MyShifts() {
+function Mesailer() {
     const [startDate,setStartDate] = useState(new Date());
     const [finishDate,setFinishDate] = useState(new Date());
     const [signal,setSignal] = useState(false)
@@ -44,7 +44,7 @@ function MyShifts() {
     useEffect(()=>{  
         if (signal) {
             if (checkDates()) {
-                navigate('/viewshifts',{state:{...dates}})             
+                navigate('/mesaiTakvimi',{state:{...dates}})             
             }
             else{
                 setErr(true)
@@ -83,4 +83,4 @@ function MyShifts() {
   )
 }
 
-export default MyShifts
+export default Mesailer

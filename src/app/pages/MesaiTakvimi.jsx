@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, CircularProgress, Typography } from '@mui/material'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -12,15 +11,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
-function ViewShifts() {
+function MesaiTakvimi() {
     const navigate = useNavigate()
     const {state} = useLocation()
     const [dates,setDates]=useState([])
     useEffect(()=>{
 
         if (state) {
-            localStorage.setItem('FROM',state.startDate)
-            localStorage.setItem('TO',state.finishDate)
+            sessionStorage.setItem('FROM',state.startDate)
+            sessionStorage.setItem('TO',state.finishDate)
         }
         else{
             navigate(-1)
@@ -28,10 +27,10 @@ function ViewShifts() {
        axios({
             method:"POST",
             url:"http://213.254.134.145:6161/api/MesaiTakvimi",
-            headers:{Token:localStorage.getItem('USER_TOKEN')},
+            headers:{Token:sessionStorage.getItem('USER_TOKEN')},
             data:{
-                StartDate:localStorage.getItem('FROM'),
-                EndDate:localStorage.getItem('TO')
+                StartDate:sessionStorage.getItem('FROM'),
+                EndDate:sessionStorage.getItem('TO')
             }
         }).then((res)=>{
             if (res.status===200) {
@@ -92,4 +91,4 @@ function ViewShifts() {
   
 
 
-export default ViewShifts
+export default MesaiTakvimi

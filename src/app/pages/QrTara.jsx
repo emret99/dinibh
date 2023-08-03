@@ -4,7 +4,7 @@ import React, { useEffect,useState } from 'react'
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import ReplayIcon from '@mui/icons-material/Replay';
 
-function ScanQrCode() {
+function QrTara() {
     const [capture,_setCapture]=useState(false)
     const [data, setData] = useState("");
     const [location,setLocation]=useState({})
@@ -37,7 +37,7 @@ function ScanQrCode() {
             method:"POST",
             url:"http://213.254.134.145:6161/api/GecisKaydiGonder",
             headers:{
-              Token:localStorage.getItem('USER_TOKEN')
+              Token:sessionStorage.getItem('USER_TOKEN')
             },
             data:{
               Data:data,
@@ -104,4 +104,4 @@ function ScanQrCode() {
 
 }
 
-export default ScanQrCode
+export default QrTara

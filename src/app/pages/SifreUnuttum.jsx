@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-function ForgotPassword() {
+function SifreUnuttum() {
     const [signal,setSignal] = useState(false)
     const [tckn,setTckn] = useState('')
     const navigate = useNavigate()
@@ -15,7 +15,7 @@ function ForgotPassword() {
                 method:"POST",
                 url:"http://213.254.134.145:6161/api/ForgotPassword",
                 headers:{
-                    Token:localStorage.getItem('USER_TOKEN')
+                    Token:sessionStorage.getItem('USER_TOKEN')
                 },
                 data:{
                     SicilNo:tckn
@@ -54,4 +54,4 @@ function ForgotPassword() {
     )
 }
 
-export default ForgotPassword
+export default SifreUnuttum
