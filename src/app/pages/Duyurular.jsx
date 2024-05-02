@@ -11,7 +11,7 @@ function Duyurular() {
     useEffect(()=>{
         axios({
             method:"GET",
-            url:"http://213.254.134.145:6161/api/GetDuyuruList",
+            url:"SECRET"+"/api/GetDuyuruList",
             headers:{
                 "Token":sessionStorage.getItem('USER_TOKEN').toString()
             }
