@@ -2,7 +2,7 @@ import axios from 'axios'
 import _ from 'lodash'
 
 class Actions {
-	apiUrl = 'http://213.254.134.145:6161/api/'
+	apiUrl = 'SECRET' +'/api/'
 	endpoints = {
 		GetToken: {
 			api: 'GetToken',
