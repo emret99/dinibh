@@ -23,7 +23,7 @@ function Gecisler() {
     useEffect(()=>{
         axios({
             method:"GET",
-            url:"http://213.254.134.145:6161/api/CihazListesi",
+            url:"SECRET" + "/api/CihazListesi",
             headers:{
                 Token:sessionStorage.getItem('USER_TOKEN')
             }           
