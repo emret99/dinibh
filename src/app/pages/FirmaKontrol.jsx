@@ -13,7 +13,7 @@ export  function FirmaKontrol () {
       //API ile host bilgileri alımı ve localStorage 'a kayıdı
        axios({
         method:"GET",
-        url:"http://5.253.141.203:6262/api/Firmalars/DNC,123",
+        url:"SECRET"+"/api/Firmalars/DNC,123",
       }).then(res=>{
         console.log(res)
       }) 
