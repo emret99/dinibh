@@ -2,7 +2,7 @@ import axios from 'axios'
 import _ from 'lodash'
 
 class Actions {
-	apiUrl = 'SECRET' +'/api/'
+	apiUrl = process.env.REACT_APP_API_URL +'/api/'
 	endpoints = {
 		GetToken: {
 			api: 'GetToken',

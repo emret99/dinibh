@@ -15,6 +15,8 @@ function MesaiTakvimi() {
     const navigate = useNavigate()
     const {state} = useLocation()
     const [dates,setDates]=useState([])
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     useEffect(()=>{
 
         if (state) {
@@ -26,7 +28,7 @@ function MesaiTakvimi() {
         }
        axios({
             method:"POST",
-            url:"http://213.254.134.145:6161/api/MesaiTakvimi",
+            url:apiUrl+"/api/MesaiTakvimi",
             headers:{Token:sessionStorage.getItem('USER_TOKEN')},
             data:{
                 StartDate:sessionStorage.getItem('FROM'),

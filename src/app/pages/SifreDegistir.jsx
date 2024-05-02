@@ -14,12 +14,14 @@ const [oldPw,setOldPw] = useState('')
 const [signal,setSignal] = useState(false)
 const [response,setResponse]= useState()
 const [err,setErr]= useState(false)
+const apiUrl = process.env.REACT_APP_API_URL;
+
 useEffect(()=>{
   if (signal) {
     
       axios({
         method:"POST",
-        url:"http://213.254.134.145:6161/api/ChangePassword",
+        url:apiUrl+"/api/ChangePassword",
         data:{
           OldPassword:oldPw,
           NewPassword:newPw

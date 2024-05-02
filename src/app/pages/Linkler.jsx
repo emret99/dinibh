@@ -11,10 +11,11 @@ import { useNavigate } from 'react-router-dom/dist';
 function Linkler() {
   const [links,setLinks] = useState([])
   const navigate = useNavigate()
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(()=>{
     axios({
     method:"GET",
-    url:"http://213.254.134.145:6161/api/FaydaliLinkler",
+    url:apiUrl+"/api/FaydaliLinkler",
     headers: { 
       "Token":sessionStorage.getItem('USER_TOKEN')
   }}).then(res=>{

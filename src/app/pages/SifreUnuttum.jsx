@@ -9,11 +9,13 @@ function SifreUnuttum() {
     const [signal,setSignal] = useState(false)
     const [tckn,setTckn] = useState('')
     const navigate = useNavigate()
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     useEffect(()=>{
         if (signal) {
             axios({
                 method:"POST",
-                url:"http://213.254.134.145:6161/api/ForgotPassword",
+                url:apiUrl+"/api/ForgotPassword",
                 headers:{
                     Token:sessionStorage.getItem('USER_TOKEN')
                 },

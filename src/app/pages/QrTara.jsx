@@ -8,7 +8,7 @@ function QrTara() {
     const [capture,_setCapture]=useState(false)
     const [data, setData] = useState("");
     const [location,setLocation]=useState({})
-
+    const apiUrl = process.env.REACT_APP_API_URL;
     function setCapture() {
       _setCapture(!capture)
       navigator.geolocation.getCurrentPosition(res=>{setLocation(res.coords)},err=>{console.log(err)})
@@ -35,7 +35,7 @@ function QrTara() {
       if (data) {
           axios({
             method:"POST",
-            url:"http://213.254.134.145:6161/api/GecisKaydiGonder",
+            url:apiUrl+"/api/GecisKaydiGonder",
             headers:{
               Token:sessionStorage.getItem('USER_TOKEN')
             },

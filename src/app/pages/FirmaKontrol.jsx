@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export  function FirmaKontrol () {
   const [signal,setSignal]= useState(false)
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(()=>{
 
@@ -13,7 +14,7 @@ export  function FirmaKontrol () {
       //API ile host bilgileri alımı ve localStorage 'a kayıdı
        axios({
         method:"GET",
-        url:"SECRET"+"/api/Firmalars/DNC,123",
+        url:apiUrl+"/api/Firmalars/DNC,123",
       }).then(res=>{
         console.log(res)
       }) 

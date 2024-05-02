@@ -14,6 +14,7 @@ function Login() {
   const {user,setUser}= useAuth()
   const [err,setErr] = useState(false)
   const [signal,setSignal] = useState(false)
+  const apiUrl = process.env.REACT_APP_API_URL;
   
 useEffect(()=>{
   
@@ -21,7 +22,7 @@ useEffect(()=>{
  
       axios(
         {method:"POST",
-        url: "http://213.254.134.145:6161/api/GetToken",
+        url: apiUrl+"/api/GetToken",
         headers:{},
         data:{SicilNo:tckn,Password:password,DeviceId:"123"}
         })

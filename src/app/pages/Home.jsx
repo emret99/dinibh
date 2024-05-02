@@ -4,10 +4,11 @@ import { useEffect } from "react"
 
 
 function Home() {
+  const apiUrl = process.env.REACT_APP_API_URL;
    useEffect(()=>{
     axios({
       method:"GET",
-      url:"http://213.254.134.145:6161/api/GecisKayitlari",
+      url:apiUrl+"/api/GecisKayitlari",
       headers:{Token:sessionStorage.getItem('USER_TOKEN')},
       data:{
         "StartDate":"2022-04-18 09:29:14",

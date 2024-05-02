@@ -20,10 +20,11 @@ function Gecisler() {
     const navigate = useNavigate()
     const [data,setData] = useState()
     const [err,setErr] = useState(false)
+    const apiUrl = process.env.REACT_APP_API_URL;
     useEffect(()=>{
         axios({
             method:"GET",
-            url:"SECRET" + "/api/CihazListesi",
+            url:apiUrl + "/api/CihazListesi",
             headers:{
                 Token:sessionStorage.getItem('USER_TOKEN')
             }           

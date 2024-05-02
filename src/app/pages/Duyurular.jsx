@@ -8,10 +8,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 function Duyurular() {
   const [data,setData] = useState([])
+  const apiUrl = process.env.REACT_APP_API_URL;
     useEffect(()=>{
         axios({
             method:"GET",
-            url:"SECRET"+"/api/GetDuyuruList",
+            url:apiUrl+"/api/GetDuyuruList",
             headers:{
                 "Token":sessionStorage.getItem('USER_TOKEN').toString()
             }
